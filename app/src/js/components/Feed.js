@@ -8,10 +8,17 @@ var React = require('react'),
 
 var Feed = React.createClass({
 
-  getItemRef: function(id) {
-    return new Firebase('https://webapi.firebaseio.com/feed/' + id);
+  // helper method to create Firebase refs to the feed
+  getRef: function() {
+    return new Firebase('https://webapi.firebaseio.com/feed/');
   },
 
+  // helper method to create Feed Item refs
+  getItemRef: function(id) {
+    return this.getRef().child(id);
+  },
+
+  // initial state items needed
   getInitialState: function() {
     return {
       items: [],
@@ -19,6 +26,8 @@ var Feed = React.createClass({
     }
   },
 
+  // set up the connection to Firebase to load the data
+  // sorty by voteCount
   loadFeed: function() {
     var ref = new Firebase('https://webapi.firebaseio.com/feed');
     ref.on('value', function(snap) {
@@ -57,6 +66,13 @@ var Feed = React.createClass({
     });
   },
 
+  onNewItem: function(item) {
+    this.getRef().push(item);
+    this.setState({
+      formDisplayed: false
+    });
+  },
+
   render: function() {
     return (
       <div>
@@ -65,7 +81,7 @@ var Feed = React.createClass({
           <ShowFormButton displayed={this.state.formDisplayed} toggleForm={this.toggleForm} />
         </div>
 
-        <FeedForm displayed={this.state.formDisplayed} />
+        <FeedForm displayed={this.state.formDisplayed} onNewItem={this.onNewItem} />
 
         <br />
         <br />
@@ -79,21 +95,3 @@ var Feed = React.createClass({
 });
 
 module.exports = Feed;
-
-  //
-  //
-  // <Feed items="items">
-  //   <SettingsPanel>
-  //     <ToggleFeedEditor />
-  //     <LowVotedCheckbox value="disableLowVoted" />
-  //   </SettingsPanel>
-  //
-  //   <FeedForm displayed="false" />
-  //
-  //   <FeedList>
-  //     <FeedItem />
-  //     <FeedItem disabled="true" />
-  //   </FeedList>
-  //
-  // </Feed>
-  //
