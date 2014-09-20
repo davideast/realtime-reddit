@@ -1,6 +1,8 @@
 /** @jsx React.DOM */
 var React = require('react'),
     FeedList = require('./FeedList'),
+    FeedForm = require('./FeedForm'),
+    ShowFormButton = require('./ShowFormButton'),
     Firebase = require('firebase'),
     _ = require('lodash');
 
@@ -12,7 +14,8 @@ var Feed = React.createClass({
 
   getInitialState: function() {
     return {
-      items: []
+      items: [],
+      formDisplayed: false
     }
   },
 
@@ -48,13 +51,49 @@ var Feed = React.createClass({
     ref.update(updateItem);
   },
 
+  toggleForm: function () {
+    this.setState({
+      formDisplayed: !this.state.formDisplayed
+    });
+  },
+
   render: function() {
     return (
-      <FeedList items={this.state.items}
-                onVote={this.handleVote} />
+      <div>
+
+        <div className="container">
+          <ShowFormButton displayed={this.state.formDisplayed} toggleForm={this.toggleForm} />
+        </div>
+
+        <FeedForm displayed={this.state.formDisplayed} />
+
+        <br />
+        <br />
+
+        <FeedList items={this.state.items}
+                  onVote={this.handleVote} />
+      </div>
     );
   }
 
 });
 
 module.exports = Feed;
+
+  //
+  //
+  // <Feed items="items">
+  //   <SettingsPanel>
+  //     <ToggleFeedEditor />
+  //     <LowVotedCheckbox value="disableLowVoted" />
+  //   </SettingsPanel>
+  //
+  //   <FeedForm displayed="false" />
+  //
+  //   <FeedList>
+  //     <FeedItem />
+  //     <FeedItem disabled="true" />
+  //   </FeedList>
+  //
+  // </Feed>
+  //
