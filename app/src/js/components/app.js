@@ -1,17 +1,11 @@
 /** @jsx React.DOM */
 var React = require('react'),
-    Message = require('./Message');
+    Feed = require('./Feed');
 
-var App =
-  React.createClass({
-    render:function(){
-      return (
-        <div>
-          Boilerplate app
-          <Message />
-        </div>
-      );
-    }
-  });
+var FEED_ITEMS = [
+  {title: 'Realtime data is awesome', description: 'Firebase is cool', voteCount: 49 },
+  {title: 'JavaScript is fun', description: 'Lexical scoping FTW', voteCount: 34},
+  {title: 'Coffee makes you awake', description: 'Drink responsibly', voteCount: 15},
+];
 
-module.exports = App;
+React.renderComponent(<Feed items={FEED_ITEMS} />, document.getElementById('app'));

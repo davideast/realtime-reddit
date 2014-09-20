@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset=utf-8>
+      <title>Realtime Reddit</title>
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+      <style>
+         body {
+           background: #FAFAFA;
+         }
+         .badge-success {
+           background: #5cb85c;
+         }
+         .badge-danger {
+           background: #d9534f;
+         }
+         .list-group-item {
+           padding: 20px 15px;
+         }
+         .form-control, .btn, .badge {
+           border-radius: 0;
+         }
+         #feedForm {
+           display: none;
+         }
+      </style>
+   </head>
+   <body>
+
+     <!-- <CounterTitle /> -->
+     <div class="jumbotron text-center">
+        <h2>Realtime Reddit</h2>
+        <p>100,000 votes and counting</p>
+     </div>
+
+
+    <!--
+
+      <Feed items="items">
+        <SettingsPanel>
+          <ToggleFeedEditor />
+          <LowVotedCheckbox value="disableLowVoted" />
+        </SettingsPanel>
+
+        <FeedForm displayed="false" />
+
+        <FeedList>
+          <FeedItem />
+          <FeedItem disabled="true" />
+        </FeedList>
+
+      </Feed>
+
+    -->
+
+    <!-- <Feed /> -->
+
+     <!-- <SettingsPanel /> -->
+      <div class="container">
+
+        <!-- <ToggleFeedEditor /> -->
+        <button class="btn btn-primary">New</button>
+
+        <!-- <LowVotedCheckbox /> -->
+         <div id="limit" class="form-group pull-right">
+            <label for="chk">Disable low voted</label>
+            <input id="chk" type="checkbox" />
+         </div>
+
+      </div>
+
+      <!-- <FeedForm /> -->
+      <form id="feedForm" role="form" class="container">
+
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Title">
+          <input type="text" class="form-control" placeholder="Description">
+          <button class="btn btn-primary btn-block">Add</button>
+        </div>
+
+      </form>
+
+      <!-- <FeedList /> -->
+      <div class="container">
+
+         <ul class="list-group">
+
+           <!-- <FeedItem /> -->
+            <li class="list-group-item">
+               <span class="badge badge-success">10</span>
+               <h4>Heading</h4>
+               Cras justo odio
+               <span class="pull-right">
+                 <button class="btn btn-success">&uarr;</button>
+                 <button class="btn btn-danger">&darr;</button>
+               </span>
+            </li>
+
+            <!-- <FeedItem disabled="true" /> -->
+            <li class="list-group-item disabled">
+               <span class="badge badge-danger">-14</span>
+               <h4>Heading</h4>
+               Cras justo odio
+               <span class="pull-right">
+                 <button class="btn btn-success disabled">&uarr;</button>
+                 <button class="btn btn-danger disabled">&darr;</button>
+               </span>
+            </li>
+
+         </ul>
+      </div>
+
+      <!-- <script src="/dist/js/app.js"></script> -->
+   </body>
+</html>
