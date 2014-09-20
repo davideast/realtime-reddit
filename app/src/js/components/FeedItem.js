@@ -2,6 +2,24 @@
 var React = require('react');
 
 var FeedItem = React.createClass({
+
+  voteUp: function(e) {
+    this.vote(parseInt(this.props.voteCount, 10) + 1);
+  },
+
+  voteDown: function (e) {
+    this.vote(parseInt(this.props.voteCount, 10) - 1);
+  },
+
+  vote: function(newCount) {
+    this.props.onVote({
+      key: this.props.key,
+      voteCount: newCount,
+      title: this.props.title,
+      description: this.props.description
+    });
+  },
+
   render: function() {
     return (
       <li className="list-group-item">
@@ -9,8 +27,8 @@ var FeedItem = React.createClass({
          <h4>{ this.props.title }</h4>
          { this.props.description }
          <span className="pull-right">
-           <button className="btn btn-sm btn-primary">&uarr;</button>
-           <button className="btn btn-sm btn-primary">&darr;</button>
+           <button id="up" className="btn btn-sm btn-primary" onClick={this.voteUp}>&uarr;</button>
+           <button id="down" className="btn btn-sm btn-primary" onClick={this.voteDown}>&darr;</button>
          </span>
       </li>
     );
