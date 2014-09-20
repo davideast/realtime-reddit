@@ -1,7 +1,8 @@
 /** @jsx React.DOM */
 var React = require('react'),
     FeedList = require('./FeedList'),
-    Firebase = require('firebase');
+    Firebase = require('firebase'),
+    _ = require('lodash');
 
 var Feed = React.createClass({
 
@@ -27,8 +28,12 @@ var Feed = React.createClass({
         items.push(item);
       });
 
+      var sortedItems = _.sortBy(items, function(item) {
+        return -item.voteCount;
+      }, items);
+
       this.setState({
-        items: items
+        items: sortedItems
       });
 
     }.bind(this));
@@ -44,10 +49,10 @@ var Feed = React.createClass({
   },
 
   render: function() {
-
     return (
-      <FeedList items={this.state.items} onVote={this.handleVote} />
-    )
+      <FeedList items={this.state.items}
+                onVote={this.handleVote} />
+    );
   }
 
 });

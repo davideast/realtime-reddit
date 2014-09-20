@@ -9,7 +9,6 @@ var React = require('react'),
 //   {title: 'Coffee makes you awake', description: 'Drink responsibly', voteCount: 15},
 // ];
 
-
 React.renderComponent(
   <Feed />,
   document.getElementById('app')
