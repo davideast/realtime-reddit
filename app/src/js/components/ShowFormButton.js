@@ -11,11 +11,11 @@ var ShowFormButton = React.createClass({
     var classString, buttonText;
 
     if (this.props.displayed) {
-      classString = 'btn btn-warning btn-block';
+      classString = 'btn btn-default btn-block';
       buttonText = 'Cancel';
     } else {
       classString = 'btn btn-success btn-block';
-      buttonText = 'Create';
+      buttonText = 'Create New Item';
     }
 
     return (

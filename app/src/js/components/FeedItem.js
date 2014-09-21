@@ -21,9 +21,10 @@ var FeedItem = React.createClass({
   },
 
   render: function() {
+    var positiveNegativeClass = this.props.voteCount >= 0 ? 'badge badge-success' : 'badge badge-danger';
     return (
       <li className="list-group-item">
-         <span className="badge badge-success">{ this.props.voteCount }</span>
+         <span className={positiveNegativeClass}>{ this.props.voteCount }</span>
          <h4>{ this.props.title }</h4>
          { this.props.description }
          <span className="pull-right">
