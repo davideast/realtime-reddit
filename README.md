@@ -1,1 +1,3 @@
-# React Boilerplate
+# Realtime Reddit
+
+React + Firebase.
