@@ -29,6 +29,7 @@ var Feed = React.createClass({
   // set up the connection to Firebase to load the data
   // sorty by voteCount
   loadFeed: function() {
+
     var ref = new Firebase('https://webapi.firebaseio.com/feed');
     ref.on('value', function(snap) {
 

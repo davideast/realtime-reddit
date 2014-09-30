@@ -9,7 +9,6 @@ var gulp = require('gulp'),
 gulp.task('browserify', function() {
     gulp.src('./app/src/js/main.js')
       .pipe(browserify({transform: 'reactify'}))
-      .pipe(concat('app.js'))
       .pipe(gulp.dest('./app/dist/js'));
 });
 
