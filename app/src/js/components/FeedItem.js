@@ -3,12 +3,16 @@ var React = require('react');
 
 var FeedItem = React.createClass({
 
-  voteUp: function(e) {
-    this.vote(parseInt(this.props.voteCount, 10) + 1);
+  voteUp: function() {
+    var count = parseInt(this.props.voteCount, 10);
+    var newCount = count + 1;
+    this.vote(newCount);
   },
 
-  voteDown: function (e) {
-    this.vote(parseInt(this.props.voteCount, 10) - 1);
+  voteDown: function() {
+    var count = parseInt(this.props.voteCount, 10);
+    var newCount = count - 1;
+    this.vote(newCount);
   },
 
   vote: function(newCount) {
@@ -21,7 +25,10 @@ var FeedItem = React.createClass({
   },
 
   render: function() {
-    var positiveNegativeClass = this.props.voteCount >= 0 ? 'badge badge-success' : 'badge badge-danger';
+
+    var positiveNegativeClass =
+      this.props.voteCount >= 0 ? 'badge badge-success' : 'badge badge-danger';
+
     return (
       <li className="list-group-item">
          <span className={positiveNegativeClass}>{ this.props.voteCount }</span>
